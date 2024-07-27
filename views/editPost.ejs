@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <style>
+    .post-text {
+      font-size: 1.4rem;
+      padding: 20px;
+    }
+    .post {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+  <body>
+    <form action="/posts/<%= post.post_id %>/edit" method="POST">
+      <textarea
+        name="text"
+        id="text"
+        rows="4"
+        cols="50"
+        placeholder="Type somthing"
+      >
+<%= post.text %></textarea
+      >
+      <br />
+      <button type="submit">Add New Post</button>
+    </form>
+  </body>
+</html>

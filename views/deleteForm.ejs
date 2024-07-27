@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete Post</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .post {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      .post p {
+        margin: 5px 0;
+      }
+      .post-actions {
+        margin-top: 10px;
+      }
+      .post-actions button {
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+      .post-actions button:hover {
+        background-color: darkred;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="post">
+      <p><strong>Post Text:</strong> <%= post.text %></p>
+      <p>
+        <strong>Created by:</strong> <%= post.username %> on <%= new
+        Date(post.created_at).toLocaleString() %>
+      </p>
+      <div class="post-actions">
+        <form action="/posts/<%= post.post_id %>/delete" method="POST">
+          <!-- Hidden field to simulate DELETE method -->
+          <input
+            type="hidden"
+            name="post_id"
+            id="post_id"
+            value="<%= post.post_id %>"
+          />
+          <button type="submit">Delete Post</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

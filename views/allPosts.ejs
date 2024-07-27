@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Posts</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .post {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      .post h2 {
+        margin: 0;
+        font-size: 1.5em;
+      }
+      .post-text {
+        font-size: 1.4rem;
+        padding: 20px;
+      }
+      .post p {
+        margin: 5px 0;
+      }
+      .post time {
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="/posts/add" method="POST">
+      <textarea
+        name="text"
+        id="text"
+        rows="4"
+        cols="50"
+        placeholder="Type somthing"
+      ></textarea>
+      <br />
+      <button type="submit">Add New Post</button>
+    </form>
+    <br />
+    <a href="/posts/profile">View User Profile</a>
+    <br />
+    <h1>All Posts</h1>
+    <% if (posts.length > 0) { %> <% posts.forEach(post => { %>
+    <div class="post">
+      <p class="post-text"><%= post.text %></p>
+      <p>
+        <strong>Created by </strong> <%= post.username %>
+        <strong> At:</strong>
+        <time datetime="<%= post.created_at.toISOString() %>"
+          ><%= post.created_at.toLocaleString() %></time
+        >
+      </p>
+    </div>
+    <% }) %> <% } else { %>
+    <p>No posts available.</p>
+    <% } %>
+  </body>
+</html>
